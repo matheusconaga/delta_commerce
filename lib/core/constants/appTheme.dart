@@ -13,6 +13,7 @@ class Apptheme {
       color: Appcolors.light,
     )
     ),
+    scaffoldBackgroundColor: Appcolors.light,
 
   );
 

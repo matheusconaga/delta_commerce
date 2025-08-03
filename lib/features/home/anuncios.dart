@@ -1,5 +1,6 @@
 import 'package:delta_commerce/core/constants/appText.dart';
 import 'package:delta_commerce/widgets/actionButton.dart';
+import 'package:delta_commerce/widgets/itemAnuncio.dart';
 import 'package:flutter/material.dart';
 
 class Anuncios extends StatefulWidget {
@@ -20,7 +21,7 @@ appBar: AppBar(
     child: Image.asset("assets/images/logo_delta.png", fit: BoxFit.cover,),
   ),
   actions: [
-     ActionButton(
+    ActionButton(
       func: (){
         print("nada!");
       },
@@ -35,10 +36,27 @@ appBar: AppBar(
   ],
 ),
 body: Center(
-  child: Text(
-    "Home",
-    style: Apptext.Heading1,
-    ),
+  child: SingleChildScrollView(
+child: Column(
+    mainAxisAlignment: MainAxisAlignment.center,
+    children: [
+      SizedBox(height: 16,),
+      Itemanuncio(),
+      SizedBox(height: 12,),
+      Itemanuncio(),
+      SizedBox(height: 12,),
+      Itemanuncio(),
+    SizedBox(height: 12,),
+      Itemanuncio(),
+      SizedBox(height: 12,),
+      Itemanuncio(),
+      SizedBox(height: 12,),
+      Itemanuncio(),
+      SizedBox(height: 12,),
+      Itemanuncio(),
+    ],
+  ),
+  ),
 ),
     );
   }
