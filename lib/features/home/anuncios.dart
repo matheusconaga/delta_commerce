@@ -3,6 +3,7 @@ import 'package:delta_commerce/core/constants/appText.dart';
 import 'package:delta_commerce/core/constants/spacing.dart';
 import 'package:delta_commerce/core/utils/responsive.dart';
 import 'package:delta_commerce/widgets/actionButton.dart';
+import 'package:delta_commerce/widgets/filtroItem.dart';
 import 'package:delta_commerce/widgets/itemAnuncio.dart';
 import 'package:flutter/material.dart';
 
@@ -60,13 +61,30 @@ class _AnunciosState extends State<Anuncios> {
 
               // Parte de baixo: filtro
               Padding(
-                padding: EdgeInsetsGeometry.only(top: Spacing.SpacingP),
+                padding: EdgeInsets.only(top: Spacing.SpacingP),
                 child: Container(
                   height: 56,
                   color: Appcolors.light,
                   child: Row(
-                    mainAxisAlignment: MainAxisAlignment.end,
                     children: [
+                      Expanded(
+                        child: SingleChildScrollView(
+                          scrollDirection: Axis.horizontal,
+                          padding: EdgeInsets.only(left: Spacing.SpacingM),
+                          child: Row(
+                            children: [
+                              FiltroItem(),
+                              SizedBox(width: Spacing.SpacingM),
+                              FiltroItem(),
+                              SizedBox(width: Spacing.SpacingM),
+                              FiltroItem(),
+                              SizedBox(width: Spacing.SpacingM),
+                              FiltroItem(),
+                            ],
+                          ),
+                        ),
+                      ),
+
                       Padding(
                         padding: EdgeInsets.only(right: Spacing.SpacingM),
                         child: ActionButton(
@@ -91,11 +109,30 @@ class _AnunciosState extends State<Anuncios> {
           ),
         ),
       ),
-      body: Center(
-        child: SingleChildScrollView(
+      body: SingleChildScrollView(
+        child: Center(
           child: Column(
-            mainAxisAlignment: MainAxisAlignment.center,
-            children: [Itemanuncio()],
+            children: [
+              SizedBox(height: 16,),
+              Itemanuncio(),
+              SizedBox(height: 16,),
+              Itemanuncio(),
+              SizedBox(height: 16,),
+              Itemanuncio(),
+              SizedBox(height: 16,),
+              Itemanuncio(),
+              SizedBox(height: 16,),
+              Itemanuncio(),
+              SizedBox(height: 16,),
+              Itemanuncio(),
+              SizedBox(height: 16,),
+              Itemanuncio(),
+              SizedBox(height: 16,),
+              Itemanuncio(),
+              SizedBox(height: 16,),
+              Itemanuncio(),
+              SizedBox(height: 16,),
+            ],
           ),
         ),
       ),

@@ -39,7 +39,7 @@ class _ItemanuncioState extends State<Itemanuncio> {
     crossAxisAlignment: CrossAxisAlignment.start,
     children: [
       Image.asset(
-        "assets/images/logo_delta.png",
+        "assets/images/notebook.png",
         width: Responsive.hp(context, 16),
         height: Responsive.hp(context, 16),
         fit: BoxFit.cover,
