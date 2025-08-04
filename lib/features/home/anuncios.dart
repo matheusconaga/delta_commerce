@@ -2,6 +2,7 @@ import 'package:delta_commerce/core/constants/appColors.dart';
 import 'package:delta_commerce/core/constants/appText.dart';
 import 'package:delta_commerce/core/constants/spacing.dart';
 import 'package:delta_commerce/core/utils/responsive.dart';
+import 'package:delta_commerce/routes.dart';
 import 'package:delta_commerce/widgets/actionButton.dart';
 import 'package:delta_commerce/widgets/filtroItem.dart';
 import 'package:delta_commerce/widgets/itemAnuncio.dart';
@@ -19,7 +20,7 @@ class _AnunciosState extends State<Anuncios> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: PreferredSize(
-        preferredSize: Size.fromHeight(Responsive.hp(context, 15)),
+        preferredSize: Size.fromHeight(Responsive.hp(context, 20)),
         child: AppBar(
           elevation: 0,
           automaticallyImplyLeading: false,
@@ -91,7 +92,7 @@ class _AnunciosState extends State<Anuncios> {
                           color: Appcolors.accent,
                           icon: Icons.filter_alt_outlined,
                           func: () {
-                            print("Filtrando...");
+                            Navigator.pushNamed(context, Rotas.filter);
                           },
                         ),
                       ),
@@ -114,23 +115,23 @@ class _AnunciosState extends State<Anuncios> {
           child: Column(
             children: [
               SizedBox(height: 16,),
-              Itemanuncio(),
+              ItemAnuncio(),
               SizedBox(height: 16,),
-              Itemanuncio(),
+              ItemAnuncio(),
               SizedBox(height: 16,),
-              Itemanuncio(),
+              ItemAnuncio(),
               SizedBox(height: 16,),
-              Itemanuncio(),
+              ItemAnuncio(),
               SizedBox(height: 16,),
-              Itemanuncio(),
+              ItemAnuncio(),
               SizedBox(height: 16,),
-              Itemanuncio(),
+              ItemAnuncio(),
               SizedBox(height: 16,),
-              Itemanuncio(),
+              ItemAnuncio(),
               SizedBox(height: 16,),
-              Itemanuncio(),
+              ItemAnuncio(),
               SizedBox(height: 16,),
-              Itemanuncio(),
+              ItemAnuncio(),
               SizedBox(height: 16,),
             ],
           ),

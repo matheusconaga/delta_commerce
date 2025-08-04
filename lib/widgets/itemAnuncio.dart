@@ -1,26 +1,29 @@
 import 'package:delta_commerce/core/constants/appColors.dart';
 import 'package:delta_commerce/core/constants/appText.dart';
+import 'package:delta_commerce/core/services/regiaoService.dart';
 import 'package:delta_commerce/core/utils/responsive.dart';
 import 'package:delta_commerce/widgets/actionButton.dart';
 import 'package:flutter/material.dart';
 
-class Itemanuncio extends StatefulWidget {
-  const Itemanuncio({super.key});
+class ItemAnuncio extends StatefulWidget {
+  const ItemAnuncio({super.key});
 
   @override
-  State<Itemanuncio> createState() => _ItemanuncioState();
+  State<ItemAnuncio> createState() => _ItemAnuncioState();
 }
 
-class _ItemanuncioState extends State<Itemanuncio> {
+class _ItemAnuncioState extends State<ItemAnuncio> {
+
+  final RegiaoService _regiaoService = RegiaoService();
+
   @override
   Widget build(BuildContext context) {
     return GestureDetector(
       onTap: (){
-        print("Item clicado!");
+
       },
       child: Container(
       width: Responsive.wp(context, 90),
-      height: Responsive.hp(context, 20),
       decoration: BoxDecoration(
         borderRadius: BorderRadius.circular(10),
         color: Appcolors.light,
