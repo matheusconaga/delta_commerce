@@ -1,6 +1,5 @@
 import 'package:delta_commerce/core/constants/appColors.dart';
 import 'package:delta_commerce/core/constants/appText.dart';
-import 'package:delta_commerce/core/services/regiaoService.dart';
 import 'package:delta_commerce/core/utils/responsive.dart';
 import 'package:delta_commerce/widgets/actionButton.dart';
 import 'package:flutter/material.dart';
@@ -14,7 +13,6 @@ class ItemAnuncio extends StatefulWidget {
 
 class _ItemAnuncioState extends State<ItemAnuncio> {
 
-  final RegiaoService _regiaoService = RegiaoService();
 
   @override
   Widget build(BuildContext context) {

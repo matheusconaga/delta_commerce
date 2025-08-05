@@ -1,5 +1,4 @@
 import 'package:delta_commerce/core/constants/appColors.dart';
-import 'package:delta_commerce/core/constants/appText.dart';
 import 'package:delta_commerce/core/constants/spacing.dart';
 import 'package:delta_commerce/core/utils/responsive.dart';
 import 'package:delta_commerce/routes.dart';

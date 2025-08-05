@@ -1,8 +1,11 @@
-import 'package:delta_commerce/core/constants/appText.dart';
+import 'package:delta_commerce/core/constants/appColors.dart';
 import 'package:delta_commerce/core/constants/spacing.dart';
+import 'package:delta_commerce/features/home/view_model/filterVM.dart';
 import 'package:delta_commerce/widgets/actionButton.dart';
 import 'package:delta_commerce/widgets/appButton.dart';
+import 'package:delta_commerce/widgets/dropFilter.dart';
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
 
 class Filter extends StatefulWidget {
   const Filter({super.key});
@@ -12,8 +15,12 @@ class Filter extends StatefulWidget {
 }
 
 class _FilterState extends State<Filter> {
+
   @override
   Widget build(BuildContext context) {
+
+    final filterVM = Provider.of<FilterVM>(context);
+
     return Scaffold(
       appBar: AppBar(
         automaticallyImplyLeading: false,
@@ -27,14 +34,24 @@ class _FilterState extends State<Filter> {
           ),
         ],
       ),
-      body: Center(
-        child: SingleChildScrollView(
+      body: SingleChildScrollView(
           child: Column(
             children: [
-              Text("Aqui fica os filtros", style: Apptext.Heading2,),
+              SizedBox(height: Spacing.SpacingG,),
+              DropFilter(
+                titulo: "Categorias",
+                filtros: filterVM.categorias,
+                selecionados: filterVM.selecionadosCategorias,
+                onChanged: (novosSelecionados) {
+                  setState(() {
+                    filterVM.selecionadosCategorias = novosSelecionados;
+                  });
+                  print("Selecionados: ${filterVM.selecionadosCategorias}");
+                },
+              ),
+              SizedBox(height: Spacing.SpacingP,),
             ],
           ),
-        ),
       ),
       bottomNavigationBar: SafeArea(
         child: Padding(
@@ -45,7 +62,7 @@ class _FilterState extends State<Filter> {
             children: [
               Appbutton(title: "Aplicar filtros"),
               SizedBox(height: Spacing.SpacingM),
-              Appbutton(title: "limpar filtros"),
+              Appbutton(title: "Limpar filtros", sec: true,),
             ],
           ),
         ),
