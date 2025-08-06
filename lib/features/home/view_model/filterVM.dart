@@ -61,4 +61,18 @@ class FilterVM extends ChangeNotifier{
     notifyListeners();
   }
 
+  void removerFiltro(String filtro) {
+    if (selecionadosCategorias.contains(filtro)) {
+      selecionadosCategorias.remove(filtro);
+    }
+
+    if (selecionadosRegiao.contains(filtro)) {
+      selecionadosRegiao.remove(filtro);
+    }
+
+    notifyListeners();
+  }
+
+
+
 }

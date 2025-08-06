@@ -56,7 +56,6 @@ class _FilterState extends State<Filter> {
                    setState(() {
                      filterVM.selecionadosCategorias = novosSelecionados;
                    });
-                   print("Selecionados: ${filterVM.selecionadosCategorias}");
                  },
                ),
              ),

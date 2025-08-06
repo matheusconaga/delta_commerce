@@ -1,11 +1,13 @@
 import 'package:delta_commerce/core/constants/appColors.dart';
 import 'package:delta_commerce/core/constants/spacing.dart';
 import 'package:delta_commerce/core/utils/responsive.dart';
+import 'package:delta_commerce/features/home/view_model/filterVM.dart';
 import 'package:delta_commerce/routes.dart';
 import 'package:delta_commerce/widgets/actionButton.dart';
 import 'package:delta_commerce/widgets/filtroItem.dart';
 import 'package:delta_commerce/widgets/itemAnuncio.dart';
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
 
 class Anuncios extends StatefulWidget {
   const Anuncios({super.key});
@@ -30,8 +32,12 @@ class _AnunciosState extends State<Anuncios> {
   }
 
 
+
   @override
   Widget build(BuildContext context) {
+
+    final filterVM = Provider.of<FilterVM>(context);
+
     return Scaffold(
       appBar: PreferredSize(
         preferredSize: Size.fromHeight(Responsive.hp(context, 20)),
@@ -88,22 +94,23 @@ class _AnunciosState extends State<Anuncios> {
                           padding: EdgeInsets.only(left: Spacing.SpacingM),
                           child: Row(
                             children: [
-                              ...categoriasSelecionadas.map((cat) => Padding(
+                              ...filterVM.selecionadosCategorias.map((cat) => Padding(
                                 padding: EdgeInsets.only(right: Spacing.SpacingM),
-                                child: FiltroItem(title: cat,onRemove: (cat){
-                                  setState(() {
-                                    categoriasSelecionadas.remove(cat);
-                                  });
-                                },),
+                                child: FiltroItem(
+                                  title: cat,
+                                  onRemove: (title) {
+                                    filterVM.removerFiltro(title);
+                                  },
+                                ),
                               )),
-
-                              ...regioesSelecionadas.map((regiao) => Padding(
+                              ...filterVM.selecionadosRegiao.map((regiao) => Padding(
                                 padding: EdgeInsets.only(right: Spacing.SpacingM),
-                                child: FiltroItem(title: regiao, onRemove: (regiao){
-                                  setState(() {
-                                    regioesSelecionadas.remove(regiao);
-                                  });
-                                },),
+                                child: FiltroItem(
+                                  title: regiao,
+                                  onRemove: (title) {
+                                    filterVM.removerFiltro(title);
+                                  },
+                                ),
                               )),
                             ],
                           ),
