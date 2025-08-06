@@ -16,8 +16,8 @@ main() {
       child: MaterialApp(
         title: "delta commerce",
         // home: DetalhesAnuncio(),
-        // home: Anuncios(),
-        home: Filter(),
+        home: Anuncios(),
+        // home: Filter(),
         debugShowCheckedModeBanner: false,
         theme: Apptheme.theme,
 

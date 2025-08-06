@@ -5,7 +5,15 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
 class FiltroItem extends StatefulWidget {
-  const FiltroItem({super.key});
+  const FiltroItem({
+    required this.title,
+    required this.onRemove,
+    super.key,
+  });
+
+  final String title;
+  final void Function(String title) onRemove;
+
 
   @override
   State<FiltroItem> createState() => _FiltroItemState();
@@ -24,13 +32,13 @@ class _FiltroItemState extends State<FiltroItem> {
         child: Row(
           children: [
             Text(
-              "Notebook",
+              widget.title,
               style: Apptext.Body1.copyWith(color: Appcolors.accent),
             ),
             SizedBox(width: Spacing.SpacingP),
             GestureDetector(
               onTap: () {
-                print("Removendo item");
+                widget.onRemove(widget.title);
               },
               child: Icon(Icons.remove_circle_outline, color: Appcolors.danger),
             ),

@@ -15,6 +15,21 @@ class Anuncios extends StatefulWidget {
 }
 
 class _AnunciosState extends State<Anuncios> {
+
+  List<String> regioesSelecionadas = [];
+  List<String> categoriasSelecionadas = [];
+
+  @override
+  void didChangeDependencies() {
+    super.didChangeDependencies();
+    final args = ModalRoute.of(context)?.settings.arguments as Map<String, dynamic>? ?? {};
+    setState(() {
+      regioesSelecionadas = args['regioes'] != null ? List<String>.from(args['regioes']) : [];
+      categoriasSelecionadas = args['categorias'] != null ? List<String>.from(args['categorias']) : [];
+    });
+  }
+
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -73,13 +88,23 @@ class _AnunciosState extends State<Anuncios> {
                           padding: EdgeInsets.only(left: Spacing.SpacingM),
                           child: Row(
                             children: [
-                              FiltroItem(),
-                              SizedBox(width: Spacing.SpacingM),
-                              FiltroItem(),
-                              SizedBox(width: Spacing.SpacingM),
-                              FiltroItem(),
-                              SizedBox(width: Spacing.SpacingM),
-                              FiltroItem(),
+                              ...categoriasSelecionadas.map((cat) => Padding(
+                                padding: EdgeInsets.only(right: Spacing.SpacingM),
+                                child: FiltroItem(title: cat,onRemove: (cat){
+                                  setState(() {
+                                    categoriasSelecionadas.remove(cat);
+                                  });
+                                },),
+                              )),
+
+                              ...regioesSelecionadas.map((regiao) => Padding(
+                                padding: EdgeInsets.only(right: Spacing.SpacingM),
+                                child: FiltroItem(title: regiao, onRemove: (regiao){
+                                  setState(() {
+                                    regioesSelecionadas.remove(regiao);
+                                  });
+                                },),
+                              )),
                             ],
                           ),
                         ),

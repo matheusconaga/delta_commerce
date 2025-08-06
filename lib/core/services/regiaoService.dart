@@ -16,7 +16,6 @@ class RegiaoService{
 
       retorno.sort((a, b) => a['nome'].compareTo(b['nome']));
 
-      print("Estados carregados:");
       for (var estado in retorno) {
         print("${estado['id']} - ${estado['nome']} (${estado['sigla']})");
       }
@@ -40,8 +39,6 @@ class RegiaoService{
 
       cidades.sort((a, b) => a['nome'].compareTo(b['nome']));
 
-
-      print("Cidades do estado ${idEstado}:");
       for (var cidade in cidades) {
         print(cidade['nome']);
       }

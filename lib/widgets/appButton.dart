@@ -7,12 +7,14 @@ import 'package:flutter/material.dart';
 class Appbutton extends StatefulWidget {
   const Appbutton({
     required this.title,
+    required this.func,
     this.isImage = false,
     this.isIcon = false,
     this.sec = false,
     super.key
   });
 
+  final Function() func;
   final String title;
   final bool isImage;
   final bool isIcon;
@@ -39,9 +41,7 @@ class _AppbuttonState extends State<Appbutton> {
             ),
           ),
         ),
-        onPressed: (){
-          print("Botao clicado!");
-        },
+        onPressed: widget.func,
         child: Row(
           mainAxisAlignment: MainAxisAlignment.center,
           children: [

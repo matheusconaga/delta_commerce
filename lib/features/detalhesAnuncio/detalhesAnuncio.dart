@@ -106,6 +106,9 @@ class _DetalhesAnuncioState extends State<DetalhesAnuncio> {
         child: Padding(
           padding: EdgeInsetsGeometry.all(Spacing.SpacingGG),
           child: Appbutton(
+            func: (){
+
+            },
             isImage: true,
             // isIcon: true,
             title: "Chat com Whatsapp",

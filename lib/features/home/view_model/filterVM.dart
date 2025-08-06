@@ -13,13 +13,52 @@ class FilterVM extends ChangeNotifier{
 
   List<String> selecionadosCategorias = [];
 
-  getEstados(){
+  Map<String, List<String>> categoriasRegiao = {};
+  Map<String, String> cidadeParaSigla = {};
+  List<String> selecionadosRegiao = [];
 
-    var estados = _regiao.retornaEstado();
-    print(estados);
+  bool carregando = false;
 
+  Future<void> carregarEstadosECidades() async {
+    carregando = true;
+    notifyListeners();
+
+    final estados = await _regiao.retornaEstado();
+    Map<String, List<String>> temp = {};
+
+    for (var estado in estados) {
+      int id = estado['id'];
+      String nomeEstado = estado['nome'];
+      String siglaEstado = estado['sigla'];
+      String nomeFormatado = "$nomeEstado - $siglaEstado";
+
+      final cidades = await _regiao.retornaCidadesPorEstado(id);
+      List<String> nomesCidades = [];
+
+      for (var cidade in cidades) {
+        final nomeCidade = cidade['nome'];
+        nomesCidades.add("$nomeCidade - $siglaEstado");
+      }
+
+      nomesCidades.sort();
+      temp[nomeFormatado] = nomesCidades;
+    }
+
+    categoriasRegiao = temp;
+    carregando = false;
+    notifyListeners();
   }
 
 
+  void atualizarSelecionados(List<String> novos) {
+    selecionadosRegiao = novos;
+    notifyListeners();
+  }
+
+  void limparFiltros() {
+    selecionadosCategorias.clear();
+    selecionadosRegiao.clear();
+    notifyListeners();
+  }
 
 }
