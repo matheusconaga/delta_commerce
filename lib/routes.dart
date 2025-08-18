@@ -2,6 +2,7 @@
 import 'package:delta_commerce/core/constants/appColors.dart';
 import 'package:delta_commerce/core/constants/appText.dart';
 import 'package:delta_commerce/core/constants/spacing.dart';
+import 'package:delta_commerce/features/detalhesAnuncio/detalhesAnuncio.dart';
 import 'package:delta_commerce/features/home/view/anuncios.dart';
 import 'package:delta_commerce/widgets/filter.dart';
 import 'package:flutter/cupertino.dart';
@@ -15,6 +16,8 @@ class RouteGenerator{
         return MaterialPageRoute(builder: (_) => Anuncios());
       case Rotas.filter:
         return MaterialPageRoute(builder: (_) => Filter());
+      case Rotas.detalhes:
+        return MaterialPageRoute(builder: (_) => DetalhesAnuncio());
       default:
         return _erroRota();
     }
@@ -49,4 +52,6 @@ class RouteGenerator{
 class Rotas {
   static const String home = '/';
   static const String filter = '/filter';
+  static const String detalhes = '/detalhes';
+
 }

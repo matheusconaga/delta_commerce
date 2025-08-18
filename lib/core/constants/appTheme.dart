@@ -9,9 +9,10 @@ class Apptheme {
     appBarTheme: AppBarTheme(
     backgroundColor: Appcolors.primary,
     titleTextStyle: Apptext.Heading2.copyWith(color: Appcolors.light),
-    actionsIconTheme: IconThemeData(
-      color: Appcolors.light,
-    )
+      iconTheme: IconThemeData(
+        color: Appcolors.light,
+        size: 30,
+      ),
     ),
     scaffoldBackgroundColor: Appcolors.light,
 

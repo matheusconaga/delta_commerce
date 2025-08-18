@@ -2,6 +2,7 @@ import 'package:delta_commerce/core/constants/appColors.dart';
 import 'package:delta_commerce/core/constants/appText.dart';
 import 'package:delta_commerce/core/constants/spacing.dart';
 import 'package:delta_commerce/core/utils/responsive.dart';
+import 'package:delta_commerce/features/detalhesAnuncio/view_model/whatsappVM.dart';
 import 'package:delta_commerce/widgets/appButton.dart';
 import 'package:delta_commerce/widgets/imageAnuncio.dart';
 import 'package:flutter/material.dart';
@@ -14,15 +15,20 @@ class DetalhesAnuncio extends StatefulWidget {
 }
 
 class _DetalhesAnuncioState extends State<DetalhesAnuncio> {
+  
+  WhatsappVM whatsappVM = WhatsappVM();
+  
+  
   @override
   Widget build(BuildContext context) {
+
+    
     return Scaffold(
       appBar: AppBar(
-        title: Center(
-          child: Text(
-            "Anúncio",
-            style: Apptext.Heading2.copyWith(color: Appcolors.white),
-          ),
+        centerTitle: true,
+        title: Text(
+          "Anúncio",
+          style: Apptext.Heading2.copyWith(color: Appcolors.white),
         ),
       ),
       body: SingleChildScrollView(
@@ -62,7 +68,7 @@ class _DetalhesAnuncioState extends State<DetalhesAnuncio> {
                         children: [
                           SizedBox(height: Spacing.SpacingP),
                           Text(
-                            "Notebook ASUS VivoBook Go 15 ",
+                            "Notebook ASUS VivoBook Go 15",
                             style: Apptext.Heading2,
                           ),
                           SizedBox(height: Spacing.SpacingP),
@@ -107,10 +113,9 @@ class _DetalhesAnuncioState extends State<DetalhesAnuncio> {
           padding: EdgeInsetsGeometry.all(Spacing.SpacingGG),
           child: Appbutton(
             func: (){
-
+              whatsappVM.abrirWhatsApp("5586981451876", "Notebook ASUS VivoBook Go 15");
             },
             isImage: true,
-            // isIcon: true,
             title: "Chat com Whatsapp",
           ),
         ),

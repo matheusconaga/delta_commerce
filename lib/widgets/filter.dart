@@ -83,14 +83,16 @@ class _FilterState extends State<Filter> {
             mainAxisSize: MainAxisSize.min,
             children: [
               Appbutton(title: "Aplicar filtros", func: (){
-                Navigator.pushReplacementNamed(
+                Navigator.pushNamedAndRemoveUntil(
                   context,
                   Rotas.home,
+                      (route) => false,
                   arguments: {
                     'regioes': filterVM.selecionadosRegiao,
                     'categorias': filterVM.selecionadosCategorias,
                   },
                 );
+
               },),
               SizedBox(height: Spacing.SpacingM),
               Appbutton(

@@ -1,6 +1,7 @@
 import 'package:delta_commerce/core/constants/appColors.dart';
 import 'package:delta_commerce/core/constants/appText.dart';
 import 'package:delta_commerce/core/utils/responsive.dart';
+import 'package:delta_commerce/routes.dart';
 import 'package:delta_commerce/widgets/actionButton.dart';
 import 'package:flutter/material.dart';
 
@@ -18,7 +19,7 @@ class _ItemAnuncioState extends State<ItemAnuncio> {
   Widget build(BuildContext context) {
     return GestureDetector(
       onTap: (){
-
+          Navigator.pushNamed(context, Rotas.detalhes);
       },
       child: Container(
       width: Responsive.wp(context, 90),

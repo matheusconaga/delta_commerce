@@ -31,143 +31,115 @@ class _AnunciosState extends State<Anuncios> {
     });
   }
 
-
-
+  
   @override
   Widget build(BuildContext context) {
-
     final filterVM = Provider.of<FilterVM>(context);
 
     return Scaffold(
-      appBar: PreferredSize(
-        preferredSize: Size.fromHeight(Responsive.hp(context, 20)),
-        child: AppBar(
-          elevation: 0,
-          automaticallyImplyLeading: false,
-          flexibleSpace: Column(
-            mainAxisAlignment: MainAxisAlignment.end,
+      appBar: AppBar(
+        backgroundColor: Appcolors.primary,
+        title: Padding(
+          padding: const EdgeInsets.only(top: 8.0),
+          child: Row(
+            crossAxisAlignment: CrossAxisAlignment.center,
+            mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
-              // Parte de cima: logo ou título
-              Padding(
-                padding: EdgeInsets.only(top: 40, left: 16, right: 16),
-                child: Row(
-                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                  children: [
-                    Image.asset(
-                      "assets/images/logo_delta.png",
-                      width: 50,
-                      height: 50,
-                      fit: BoxFit.cover,
-                    ),
-                    Row(
+              Image.asset(
+                "assets/images/logo_delta.png",
+                width: 50,
+                height: 50,
+                fit: BoxFit.cover,
+              ),
+              Row(
+                children: [
+                  ActionButton(
+                    func: () {
+                      print("nada!");
+                    },
+                    icon: Icons.search,
+                  ),
+                  SizedBox(width: Spacing.SpacingM),
+                  ActionButton(
+                    func: () {
+                      print("drawer");
+                    },
+                    icon: Icons.menu,
+                  ),
+                ],
+              ),
+            ],
+          ),
+        ),
+        toolbarHeight: Responsive.hp(context, 8),
+      ),
+
+      body: Column(
+        children: [
+          // FILTROS FORA DA APPBAR
+          Container(
+            height: 56,
+            color: Appcolors.light,
+            padding: EdgeInsets.symmetric(horizontal: Spacing.SpacingM),
+            child: Row(
+              children: [
+                Expanded(
+                  child: SingleChildScrollView(
+                    scrollDirection: Axis.horizontal,
+                    child: Row(
                       children: [
-                        ActionButton(
-                          func: () {
-                            print("nada!");
-                          },
-                          icon: Icons.search,
-                        ),
-                        SizedBox(width: Spacing.SpacingM),
-                        ActionButton(
-                          func: () {
-                            print("drawer");
-                          },
-                          icon: Icons.menu,
-                        ),
+                        ...filterVM.selecionadosCategorias.map((cat) => Padding(
+                          padding: EdgeInsets.only(right: Spacing.SpacingM),
+                          child: FiltroItem(
+                            title: cat,
+                            onRemove: (title) {
+                              filterVM.removerFiltro(title);
+                            },
+                          ),
+                        )),
+                        ...filterVM.selecionadosRegiao.map((regiao) => Padding(
+                          padding: EdgeInsets.only(right: Spacing.SpacingM),
+                          child: FiltroItem(
+                            title: regiao,
+                            onRemove: (title) {
+                              filterVM.removerFiltro(title);
+                            },
+                          ),
+                        )),
                       ],
                     ),
-                  ],
-                ),
-              ),
-
-              // Parte de baixo: filtro
-              Padding(
-                padding: EdgeInsets.only(top: Spacing.SpacingP),
-                child: Container(
-                  height: 56,
-                  color: Appcolors.light,
-                  child: Row(
-                    children: [
-                      Expanded(
-                        child: SingleChildScrollView(
-                          scrollDirection: Axis.horizontal,
-                          padding: EdgeInsets.only(left: Spacing.SpacingM),
-                          child: Row(
-                            children: [
-                              ...filterVM.selecionadosCategorias.map((cat) => Padding(
-                                padding: EdgeInsets.only(right: Spacing.SpacingM),
-                                child: FiltroItem(
-                                  title: cat,
-                                  onRemove: (title) {
-                                    filterVM.removerFiltro(title);
-                                  },
-                                ),
-                              )),
-                              ...filterVM.selecionadosRegiao.map((regiao) => Padding(
-                                padding: EdgeInsets.only(right: Spacing.SpacingM),
-                                child: FiltroItem(
-                                  title: regiao,
-                                  onRemove: (title) {
-                                    filterVM.removerFiltro(title);
-                                  },
-                                ),
-                              )),
-                            ],
-                          ),
-                        ),
-                      ),
-
-                      Padding(
-                        padding: EdgeInsets.only(right: Spacing.SpacingM),
-                        child: ActionButton(
-                          color: Appcolors.accent,
-                          icon: Icons.filter_alt_outlined,
-                          func: () {
-                            Navigator.pushNamed(context, Rotas.filter);
-                          },
-                        ),
-                      ),
-                    ],
                   ),
                 ),
-              ),
+                ActionButton(
+                  color: Appcolors.accent,
+                  icon: Icons.filter_alt,
+                  func: () {
+                    Navigator.pushNamed(context, Rotas.filter);
+                  },
+                ),
+              ],
+            ),
+          ),
 
-              Container(
-                width: double.infinity,
-                height: 1,
-                color: Colors.grey.shade300,
+          Divider(height: 1, color: Colors.grey.shade300),
+
+          // LISTA DE ANÚNCIOS
+          Expanded(
+            child: SingleChildScrollView(
+              child: Padding(
+                padding: EdgeInsets.only(top: 16),
+                child: Column(
+                  children: List.generate(9, (index) => Padding(
+                    padding: const EdgeInsets.only(bottom: 16),
+                    child: ItemAnuncio(),
+                  )),
+                ),
               ),
-            ],
+            ),
           ),
-        ),
-      ),
-      body: SingleChildScrollView(
-        child: Center(
-          child: Column(
-            children: [
-              SizedBox(height: 16,),
-              ItemAnuncio(),
-              SizedBox(height: 16,),
-              ItemAnuncio(),
-              SizedBox(height: 16,),
-              ItemAnuncio(),
-              SizedBox(height: 16,),
-              ItemAnuncio(),
-              SizedBox(height: 16,),
-              ItemAnuncio(),
-              SizedBox(height: 16,),
-              ItemAnuncio(),
-              SizedBox(height: 16,),
-              ItemAnuncio(),
-              SizedBox(height: 16,),
-              ItemAnuncio(),
-              SizedBox(height: 16,),
-              ItemAnuncio(),
-              SizedBox(height: 16,),
-            ],
-          ),
-        ),
+        ],
       ),
     );
   }
+
 }
