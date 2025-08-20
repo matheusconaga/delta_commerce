@@ -52,11 +52,8 @@ class _FilterState extends State<Filter> {
                  titulo: "Categorias",
                  filtros: filterVM.categorias,
                  selecionados: filterVM.selecionadosCategorias,
-                 onChanged: (novosSelecionados) {
-                   setState(() {
-                     filterVM.selecionadosCategorias = novosSelecionados;
-                   });
-                 },
+                 onChanged: filterVM.atualizarSelecionadosCategorias,
+
                ),
              ),
               SizedBox(height: Spacing.SpacingP,),
@@ -66,9 +63,7 @@ class _FilterState extends State<Filter> {
                   filtros: filterVM.categoriasRegiao,
                   selecionados: filterVM.selecionadosRegiao,
                   onChanged: (novosSelecionados) {
-                    setState(() {
-                      filterVM.atualizarSelecionados(novosSelecionados);
-                    });
+                    filterVM.atualizarSelecionados(novosSelecionados);
                   },
                 ),
               ),
@@ -98,9 +93,7 @@ class _FilterState extends State<Filter> {
               Appbutton(
                 title: "Limpar filtros",
                 func: () {
-                  setState(() {
-                    filterVM.limparFiltros();
-                  });
+                  filterVM.limparFiltros();
                 },
                 sec: true,
               ),

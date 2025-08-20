@@ -24,23 +24,15 @@ class DropFilter extends StatefulWidget {
 
 class _DropFilterState extends State<DropFilter> {
   bool expandido = false;
-  late List<String> _selecionadosLocal;
-
-  @override
-  void initState() {
-    super.initState();
-    _selecionadosLocal = List<String>.from(widget.selecionados);
-  }
 
   void _atualizarSelecionados(String item, bool checked) {
-    setState(() {
-      if (checked) {
-        _selecionadosLocal.add(item);
-      } else {
-        _selecionadosLocal.remove(item);
-      }
-    });
-    widget.onChanged(_selecionadosLocal);
+    final novosSelecionados = List<String>.from(widget.selecionados);
+    if (checked) {
+      novosSelecionados.add(item);
+    } else {
+      novosSelecionados.remove(item);
+    }
+    widget.onChanged(novosSelecionados);
   }
 
   @override
@@ -67,9 +59,9 @@ class _DropFilterState extends State<DropFilter> {
                 children: [
                   Expanded(
                     child: Text(
-                      _selecionadosLocal.isEmpty
+                      widget.selecionados.isEmpty
                           ? widget.titulo
-                          : "${widget.titulo} (${_selecionadosLocal.length} selecionadas)",
+                          : "${widget.titulo} (${widget.selecionados.length} selecionadas)",
                       style: Apptext.Button1.copyWith(color: Appcolors.dark),
                       overflow: TextOverflow.ellipsis,
                     ),
@@ -100,9 +92,12 @@ class _DropFilterState extends State<DropFilter> {
 
                     return ExpansionTile(
                       tilePadding: EdgeInsets.symmetric(horizontal: Spacing.SpacingM),
-                      title: Text(categoria, style: Apptext.Button2.copyWith(color: Appcolors.grey)),
+                      title: Text(
+                        categoria,
+                        style: Apptext.Button2.copyWith(color: Appcolors.grey),
+                      ),
                       children: subcategorias.map((sub) {
-                        final selecionado = _selecionadosLocal.contains(sub);
+                        final selecionado = widget.selecionados.contains(sub);
                         return CheckboxListTile(
                           value: selecionado,
                           onChanged: (bool? checked) {

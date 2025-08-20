@@ -55,6 +55,11 @@ class FilterVM extends ChangeNotifier{
     notifyListeners();
   }
 
+  void atualizarSelecionadosCategorias(List<String> novos) {
+    selecionadosCategorias = novos;
+    notifyListeners();
+  }
+
   void limparFiltros() {
     selecionadosCategorias.clear();
     selecionadosRegiao.clear();
