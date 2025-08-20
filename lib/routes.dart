@@ -2,6 +2,7 @@
 import 'package:delta_commerce/core/constants/appColors.dart';
 import 'package:delta_commerce/core/constants/appText.dart';
 import 'package:delta_commerce/core/constants/spacing.dart';
+import 'package:delta_commerce/features/auth/view/login.dart';
 import 'package:delta_commerce/features/detalhesAnuncio/detalhesAnuncio.dart';
 import 'package:delta_commerce/features/home/view/anuncios.dart';
 import 'package:delta_commerce/widgets/filter.dart';
@@ -16,6 +17,8 @@ class RouteGenerator{
         return MaterialPageRoute(builder: (_) => Anuncios());
       case Rotas.filter:
         return MaterialPageRoute(builder: (_) => Filter());
+      case Rotas.login:
+        return MaterialPageRoute(builder: (_) => Login());
       case Rotas.detalhes:
         return MaterialPageRoute(builder: (_) => DetalhesAnuncio());
       default:
@@ -31,6 +34,7 @@ class RouteGenerator{
         ),
         body: Center(
           child: Column(
+            mainAxisAlignment: MainAxisAlignment.center,
             children: [
               Text("Pagina não encontrada!", style: Apptext.Heading2,),
               SizedBox(height: Spacing.SpacingM,),
@@ -50,8 +54,9 @@ class RouteGenerator{
 
 }
 class Rotas {
-  static const String home = '/';
-  static const String filter = '/filter';
+  static const String home = '/anuncios';
+  static const String filter = '/anuncios/filter';
+  static const String login = '/login';
   static const String detalhes = '/detalhes';
 
 }
