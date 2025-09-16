@@ -3,6 +3,7 @@ import 'package:delta_commerce/core/constants/spacing.dart';
 import 'package:delta_commerce/core/utils/responsive.dart';
 import 'package:delta_commerce/features/home/view_model/filterVM.dart';
 import 'package:delta_commerce/routes.dart';
+import 'package:delta_commerce/widgets/AppDrawer.dart';
 import 'package:delta_commerce/widgets/actionButton.dart';
 import 'package:delta_commerce/widgets/filtroItem.dart';
 import 'package:delta_commerce/widgets/itemAnuncio.dart';
@@ -17,49 +18,42 @@ class Anuncios extends StatefulWidget {
 }
 
 class _AnunciosState extends State<Anuncios> {
-  
+  final ScrollController _scrollController = ScrollController();
+  final GlobalKey<ScaffoldState> _scaffoldKey = GlobalKey<ScaffoldState>(); // <-- chave
+
+
+  @override
+  void dispose() {
+    _scrollController.dispose();
+    super.dispose();
+  }
+
   @override
   Widget build(BuildContext context) {
     final filterVM = Provider.of<FilterVM>(context);
 
     return Scaffold(
-      appBar: AppBar(
-        backgroundColor: Appcolors.primary,
-        title: Padding(
-          padding: const EdgeInsets.only(top: 8.0),
-          child: Row(
-            crossAxisAlignment: CrossAxisAlignment.center,
-            mainAxisAlignment: MainAxisAlignment.spaceBetween,
-            children: [
-              Image.asset(
-                "assets/images/logo_delta.png",
-                width: 50,
-                height: 50,
-                fit: BoxFit.cover,
-              ),
-              Row(
-                children: [
-                  ActionButton(
-                    func: () {
-                      print("nada!");
-                    },
-                    icon: Icons.search,
-                  ),
-                  SizedBox(width: Spacing.SpacingM),
-                  ActionButton(
-                    func: () {
-                      print("drawer");
-                    },
-                    icon: Icons.menu,
-                  ),
-                ],
-              ),
-            ],
-          ),
-        ),
-        toolbarHeight: Responsive.hp(context, 8),
+      key: _scaffoldKey,
+      endDrawer: AppDrawer(
+        isLoggedIn: true,
+        userName: "Matheus",
+        userEmail: "matheus@gmail.com",
       ),
-
+      appBar : AppBar(
+        automaticallyImplyLeading: false,
+        backgroundColor: Appcolors.primary,
+        title: Image.asset("assets/images/logo_delta.png", width: 50, height: 50),
+        actions: [
+          IconButton(
+            icon: Icon(Icons.search),
+            onPressed: () => print("Pesquisar"),
+          ),
+          IconButton(
+            icon: Icon(Icons.menu),
+            onPressed: () => _scaffoldKey.currentState?.openEndDrawer(),
+          ),
+        ],
+      ),
       body: Column(
         children: [
           // FILTROS FORA DA APPBAR
@@ -112,6 +106,7 @@ class _AnunciosState extends State<Anuncios> {
           // LISTA DE ANÚNCIOS
           Expanded(
             child: SingleChildScrollView(
+              controller: _scrollController,
               child: Padding(
                 padding: EdgeInsets.only(top: 16),
                 child: Column(

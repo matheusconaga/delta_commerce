@@ -1,7 +1,6 @@
 import 'package:delta_commerce/core/constants/appTheme.dart';
 import 'package:delta_commerce/features/auth/view/login.dart';
 import 'package:delta_commerce/features/detalhesAnuncio/detalhesAnuncio.dart';
-import 'package:delta_commerce/features/home/view/exemplo.dart';
 import 'package:delta_commerce/features/home/view_model/filterVM.dart';
 import 'package:delta_commerce/routes.dart';
 import 'package:delta_commerce/widgets/filter.dart';
@@ -18,8 +17,8 @@ main() {
       child: MaterialApp(
         title: "delta commerce",
         // home: DetalhesAnuncio(),
-        // home: Anuncios(),
-        home: Login(),
+        home: Anuncios(),
+        // home: Login(),
         // home: Filter(),
         debugShowCheckedModeBanner: false,
         theme: Apptheme.theme,

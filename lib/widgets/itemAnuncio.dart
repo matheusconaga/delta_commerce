@@ -61,7 +61,7 @@ class _ItemAnuncioState extends State<ItemAnuncio> {
       ),
       ActionButton(
           color: Appcolors.accent,
-          icon: Icons.bookmark_outline,
+          icon: Icons.favorite,
           func: (){
             print("Salvando produto");
           }

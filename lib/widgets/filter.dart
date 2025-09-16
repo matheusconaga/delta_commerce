@@ -17,12 +17,23 @@ class Filter extends StatefulWidget {
 }
 
 class _FilterState extends State<Filter> {
+  final ScrollController _scrollController = ScrollController();
+
 
   @override
   void initState() {
     super.initState();
-    Provider.of<FilterVM>(context, listen: false).carregarEstadosECidades();
+    WidgetsBinding.instance.addPostFrameCallback((_) {
+      Provider.of<FilterVM>(context, listen: false).carregarEstadosECidades();
+    });
   }
+
+  @override
+  void dispose() {
+    _scrollController.dispose();
+    super.dispose();
+  }
+
 
   @override
   Widget build(BuildContext context) {
@@ -43,7 +54,7 @@ class _FilterState extends State<Filter> {
         ],
       ),
       body: SingleChildScrollView(
-        primary: true,
+        controller: _scrollController,
           child: Column(
             children: [
               SizedBox(height: Spacing.SpacingG,),
