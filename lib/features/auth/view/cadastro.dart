@@ -3,7 +3,6 @@ import 'package:delta_commerce/core/constants/appText.dart';
 import 'package:delta_commerce/core/constants/spacing.dart';
 import 'package:delta_commerce/core/utils/responsive.dart';
 import 'package:delta_commerce/core/utils/validators.dart';
-import 'package:delta_commerce/routes.dart';
 import 'package:delta_commerce/widgets/appButton.dart';
 import 'package:delta_commerce/widgets/appLink.dart';
 import 'package:delta_commerce/widgets/formInput.dart';
@@ -118,7 +117,7 @@ class _CadastroState extends State<Cadastro> {
                     child: AppLink(
                       title: "Entrar na conta",
                       func: () {
-                        Navigator.pushReplacementNamed(context, Rotas.login);
+                        Navigator.pushReplacementNamed(context, "/login");
                       },
                     ),
                   ),

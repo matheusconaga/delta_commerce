@@ -118,6 +118,7 @@ class _LoginState extends State<Login> {
                     child: AppLink(
                       title: "Criar nova conta",
                       func: () {
+                        Navigator.pushReplacementNamed(context, "/cadastro");
                       },
                     ),
                   ),
