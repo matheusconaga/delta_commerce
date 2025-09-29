@@ -16,6 +16,7 @@ class Cadastro extends StatefulWidget {
 }
 
 class _CadastroState extends State<Cadastro> {
+  final TextEditingController _nameController = TextEditingController();
   final TextEditingController _emailController = TextEditingController();
   final TextEditingController _passwordController = TextEditingController();
   final TextEditingController _confirmPasswordController = TextEditingController();
@@ -65,6 +66,14 @@ class _CadastroState extends State<Cadastro> {
                     key: _formKey,
                     child: Column(
                       children: [
+                        Padding(
+                          padding: const EdgeInsets.only(top: Spacing.SpacingG),
+                          child: FormInput(
+                            icon: const Icon(Icons.person),
+                            title: "Nome",
+                            controller: _nameController,
+                          ),
+                        ),
                         Padding(
                           padding: const EdgeInsets.only(top: Spacing.SpacingG),
                           child: FormInput(

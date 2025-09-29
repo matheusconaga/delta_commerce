@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "421021734005",
+    "project_id": "deltacommerce-b0ed0",
+    "storage_bucket": "deltacommerce-b0ed0.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:421021734005:android:e557a75ff09e18aac1143c",
+        "android_client_info": {
+          "package_name": "com.example.delta_commerce"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDCBjzXumc_NV7YxEvT52Jd4o7AV1ZxTdI"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
