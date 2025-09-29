@@ -35,7 +35,6 @@ class _AnunciosState extends State<Anuncios> {
     return Scaffold(
       key: _scaffoldKey,
       endDrawer: AppDrawer(
-        isLoggedIn: true,
         userName: "Matheus",
         userEmail: "matheus@gmail.com",
       ),

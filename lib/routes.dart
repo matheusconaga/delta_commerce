@@ -1,4 +1,3 @@
-
 import 'package:delta_commerce/core/constants/appColors.dart';
 import 'package:delta_commerce/core/constants/appText.dart';
 import 'package:delta_commerce/core/constants/spacing.dart';
@@ -6,7 +5,6 @@ import 'package:delta_commerce/features/auth/view/login.dart';
 import 'package:delta_commerce/features/detalhesAnuncio/detalhesAnuncio.dart';
 import 'package:delta_commerce/features/home/view/anuncios.dart';
 import 'package:delta_commerce/widgets/filter.dart';
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
 class RouteGenerator{
